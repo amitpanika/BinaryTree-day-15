@@ -20,10 +20,18 @@ class Node {
 
     public static void main(String[] args) {
         Scanner Scanner = new Scanner(System.in);
+        Node root = null;
         binaryTree.createTree();
+        binaryTree.inorder(root);
+        System.out.println();
+        binaryTree.preorder(root);
+        System.out.println();
+        binaryTree.postorder(root);
+        System.out.println();
+
     }
 
-    public class binaryTree {
+    public static class binaryTree {
 
         public static Node createTree() {
             Scanner scanner = null;
@@ -40,6 +48,33 @@ class Node {
 
             return root;
         }
-    }
 
+        static void inorder(Node root) {           // LNR......................
+            if (root == null) return;
+            inorder(root.Left);
+            System.out.println(root.data + " ");
+            inorder(root.Right);
+
+
+        }
+
+
+        static void postorder(Node root) {           // LRN......................
+            if (root == null) return;
+            postorder(root.Left);
+            postorder(root.Right);
+            System.out.println(root.data + " ");
+
+
+        }
+
+        static void preorder(Node root) {
+            if (root == null) return;
+            System.out.println(root.data + " ");
+            preorder(root.Left);
+            preorder(root.Right);
+
+        }
+
+    }
 }
